@@ -1,22 +1,24 @@
 package exercise;
 
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+
 // BEGIN
-public class App {
+class App {
     public static boolean scrabble(String letters, String word) {
-        char[] arr = letters.toCharArray();
+        String[] chars = letters.split("");
+        List<String> list = new ArrayList<>(Arrays.asList(chars));
         word = word.toLowerCase();
-        boolean isScrabblable = true;
-        List<Character> list = new ArrayList<>(arr);
-        for (int i = 0; i < word.length(); i++) {
-            char current = word.charAt(i);
-            if (list.contains(current)) {
-                int index = list.indexOf(current);
-                list.remove(index);
+        String[] wordArr = word.split("");
+        for (var letter : wordArr) {
+            if (list.contains(letter)) {
+                list.remove(letter);
             } else {
-                isScrabblable = false;
+                return false;
             }
         }
-        return isScrabblable;
+        return true;
     }
 }
 //END
