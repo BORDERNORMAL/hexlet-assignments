@@ -24,10 +24,10 @@ public class PostsController {
         return postRepository.findAll();
     }
 
-    @GetMapping(path = "/{id")
+    @GetMapping(path = "/{id}")
     public Post show(@PathVariable Long id) {
         return postRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("Post with id " + id + " not found"));
     }
 
     @PostMapping(path = "")
@@ -45,7 +45,7 @@ public class PostsController {
             post.setTitle(data.getTitle());
             return post;
         } else {
-            throw new ResourceNotFoundException("not found");
+            throw new ResourceNotFoundException("Post with id " + id + " not found");
         }
     }
     @DeleteMapping(path = "/{id}")
@@ -54,7 +54,7 @@ public class PostsController {
             commentRepository.deleteByPostId(id);
             postRepository.deleteById(id);
         } else {
-            throw new ResourceNotFoundException("NOT FOUND");
+            throw new ResourceNotFoundException("Post with id" + id + " not found");
         }
     }
 }
