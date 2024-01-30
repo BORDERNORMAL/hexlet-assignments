@@ -20,8 +20,7 @@ public class GuestCreateDTO {
     @Email
     private String email;
 
-    @Pattern(regexp = "/^+/")
-    @Size(min = 12, max = 14)
+    @Pattern(regexp = "\\+\\d{11,13}")
     private String phoneNumber;
 
     @Size(min = 4, max = 4)
