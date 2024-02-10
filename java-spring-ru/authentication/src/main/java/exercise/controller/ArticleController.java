@@ -46,12 +46,6 @@ public class ArticleController {
 
 
     // BEGIN
-    @Autowired
-    private AuthenticationManager manager;
-
-    @Autowired
-    private JWTUtils utils;
-
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public ArticleDTO create(@RequestBody @Valid ArticleCreateDTO data) {
